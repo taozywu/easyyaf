@@ -1,0 +1,8 @@
+/core/*
+/cache/*
+/easyyaf/cache/smarty/templates_c
+/easyyaf/cache/smarty/templates_d
+/easyyaf/lib/Core/Controller
+Extend
+Model
+Smarty
