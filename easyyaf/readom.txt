@@ -1,9 +1,0 @@
-this is easy yaf for u.
-----
-此框架是基于鸟哥yaf框架之上进行丰富扩展的轻快框架(taoyaf)
-by taozywu | 2015/09/15
-
-#2015/09/15
-1.初始化yaf框架
-2.新增smarty模板视图
-3.新增类似Benchmark性能调试插件;同时优化该配置更智能更人性化
