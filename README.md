@@ -17,7 +17,7 @@ by taozywu | 2015/09/15
 2.yaf的model部分可以支持多目录结构 例如 School_Student_V1_CatModel 对应的目录 =》 Models/Schoole/Student/V1/Cat.php
 
 
-<b>taoApiyaf说明</b>
+taoApiyaf说明
 此框架为主要提供接口服务的框架，支持cli，http访问的可自定义路由且支持restful风格多返回格式（json,html,jsonp,xml...）
 
 #2015/11/11
@@ -39,6 +39,7 @@ array("get", "v1/school/getStudent", "index", "v1", "index"), // --> /v1/school/
 Models
     School                      // 模块
         Student.php             // 子模块
+        
         V1
             Student.php         // V1 子模块
 
