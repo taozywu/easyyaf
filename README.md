@@ -38,6 +38,7 @@ array("get", "v1/school/getStudent", "index", "v1", "index"), // --> /v1/school/
 2.考虑到接口一般供给移动端使用，则会存在移动端版本各异的情况，则需要维护至少3个版本的api的处理。
 
 Models
+
     School                      // 模块
         Student.php             // 子模块
         V1
