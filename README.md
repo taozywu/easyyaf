@@ -1,14 +1,14 @@
 this is easy yaf for u.
-----
+
 此框架是基于鸟哥yaf框架之上进行丰富扩展的轻快框架(taoEasyyaf)
 之所以要搞此框架,原因很简单,一边学习一边搞一个属于自己的框架;之前已经搞一个也算不错的,但是面向对象
 少,加上结构比较乱,也较之thinkphp,yii,ci,zf,larvale等,最终选择yaf!
 制定如下:
--------------------------------------------
+
 针对中小型公司推荐框架 --- taoEasyyaf!
 针对大中型公司(复杂)推荐框架 -- taoHardyaf!
 针对移动端接口（支持rewrite/cli/restful）推荐框架 --taoApiyaf
--------------------------------------------
+
 最后申明代码中很多有借鉴成分,感谢开源,感谢你!
 by taozywu | 2015/09/15
 
@@ -36,16 +36,14 @@ array("get", "v1/school/getStudent", "index", "v1", "index"), // --> /v1/school/
 支持restful
 1.配置在config/route.php
 2.考虑到接口一般供给移动端使用，则会存在移动端版本各异的情况，则需要维护至少3个版本的api的处理。
+
 Models
     School                      // 模块
         Student.php             // 子模块
-        
         V1
             Student.php         // V1 子模块
-
         V2
             Student.php         // V2 子模块
-
         Teacher
             Index.php
             V1
