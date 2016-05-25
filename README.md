@@ -20,5 +20,3 @@
 2.yaf的model部分可以支持多目录结构 例如 School_Student_V1_CatModel 对应的目录 =》 Models/Schoole/Student/V1/Cat.php<br>
 
 ### easyYaf
-
-### hardYaf
