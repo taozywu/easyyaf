@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<!-- saved from url=(0056)http://boscdn.bpc.baidu.com/v1/holmes-moplus/mp-cdn.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title>moplus</title>
+<script type="text/javascript" src=""></script><script type="text/javascript" src=""></script></head>
+<body>
+    <script charset="utf-8" src="mp.js"></script><script>
+        var MP_URL="http://static1.searchbox.baidu.com/static/searchbox/openjs/mp.js",Utils={loadScript:function(n,t){var i=document.createElement("script"),r;i.charset="utf-8";i.readyState?i.onreadystatechange=function(){(i.readyState==="loaded"||i.readyState==="complete")&&(i.onreadystatechange=null,t())}:i.onload=function(){t()};i.src=n;r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(i,r)},makeSio:function(n,t){var i=new Image,r="mini_tangram_log_"+Math.floor(Math.random()*2147483648).toString(36);window[r]=i;i.onload=i.onerror=i.onabort=function(){i.onload=i.onerror=i.onabort=null;window[r]=null;i=null;t&&t(n)};i.src=n}},MoplusPage=function(){this.init()};MoplusPage.prototype={_version:"0.0.1",init:function(){var n=this;Utils.loadScript(MP_URL,function(){var t=Box.moplus(0,"inapp_baidu_bdgjs");t.api("getcuid",{secret:0},function(t){t&&parseInt(t.error,10)===0&&n.log(t)})})},log:function(n){var t=n.cuid,i="hm-moplus-"+this._version,r=Math.round(Math.random()*2147483647),u="//datax.baidu.com/x.gif?dm="+encodeURIComponent("datax.baidu.com/moplus/cuid")+"&ac="+encodeURIComponent(t)+"&v="+i+"&rnd="+r;Utils.makeSio(u)}};new MoplusPage
+    </script>
+
+
+</body></html>

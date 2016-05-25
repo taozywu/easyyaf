@@ -13,7 +13,7 @@ class IndexController extends \Core\Controller\Web
      */
     public function init()
     {
-        
+        parent::init();
     }
 
     /**
@@ -22,13 +22,31 @@ class IndexController extends \Core\Controller\Web
      */
     public function indexAction()
     {
-        // test smarty
-       $this->_view->content = "dd";
+       $shopVoucher = \Index\ShopModel::instance()->getVoucherList(10);
+       $shopList = \Index\ShopModel::instance()->getShopList(1, 1, 9);
 
-       //$this->_view->assign("content", "hello, yaf!");
-       // test db
-       $adapter = \Yaf\Registry::get("adapter");
-       $data = $adapter['write']->queryAll("select * from test");
-       print_r($data);
+       $this->_view->assign("shopVoucher", $shopVoucher);
+       $this->_view->assign("shopList", $shopList);
+    }
+
+    public function registerAction()
+    {
+
+    }
+
+    public function loginAction()
+    {
+
+    }
+
+
+    public function listAction()
+    {
+
+    }
+
+    public function detailAction()
+    {
+        
     }
 }

@@ -1,16 +1,33 @@
 <?php
-
 /**
  * 入口
+ *
+ * Licensed under The MIT License
+ * For full copyright and license information, please see the MIT-LICENSE.txt
+ * Redistributions of files must retain the above copyright notice.
+ * 
+ * @author taozy.wu<taozy.wu@qq.com>
+ * @copyright taozy.wu<taozy.wu@qq.com>
+ * @link http://www.github.com/taozywu
+ * @license http://www.opensource.org/licenses/mit-license.php MIT License
  */
-// DEBUG模式
-define('DEBUG', true);
 
-//根目录
+define("DEBUG", true);
+error_reporting(DEBUG ? E_ALL : 0);
+ini_set('display_errors', DEBUG ? 'On' : 'Off');
+// 是否启用命名空间
+define("NAMESPACE_OPEN", 1);
+// 根目录
 define("ROOT_PATH", realpath(dirname(__FILE__) . "/../"));
-//设定yaf全局library
-ini_set("yaf.library", ROOT_PATH . "/Core/YBase/");
-
-$app = new \Yaf\Application(ROOT_PATH . "/conf/conf.ini", ini_get('yaf.environ'));
-
+// 检查env
+isset($env) || $env = DEBUG ? "dev" : "product";
+$_SERVER['env'] = $env;
+// 检查yaf extension
+$_SERVER['yaf_extension'] = (int) extension_loaded("yaf");
+// Yaf global config
+$_SERVER['yaf_global'] = require_once ROOT_PATH . "/conf/yaf.php";
+// 引入配置文件
+require_once ROOT_PATH . "/core/Frame/config.php";
+// new yaf
+$app = new \Yaf\Application(ROOT_PATH . "/conf/conf.ini", $env);
 $app->bootstrap()->run();
