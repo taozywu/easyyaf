@@ -1,0 +1,63 @@
+﻿.normal_l{
+    background: none repeat scroll 0 0 #FFFFFF; position:relative;
+    border: 1px solid #FFE2C4;width:200px; display:block; 
+    text-align:center; float:left; overflow:hidden; margin-left:5px;
+     _margin-left:5px; margin-right:10px
+}
+
+.normal_l a img{
+    max-width:90px
+}
+
+.normal_l a.text{
+    display:block
+}
+
+.box_detail_img {
+    height: 160px;
+    padding-top: 20px;
+    position: relative;
+    text-align: center;
+    width: 200px;
+}
+
+.box_detail_img .coupondetail_left_fubiao{
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+
+#navs{
+    position:fixed;left:4px;bottom:4px;width:40px;height:40px;line-height:40px;list-style-type:none;margin:0;
+    padding:0;text-align:center;color:#fff;cursor:pointer;
+}
+#navs>li,#navs:after{
+    position:absolute;left:0;top:0;width:100%;height:100%;border-radius:50%;-webkit-border-radius:50%;
+    background-color:#4ECDC4;
+}
+#navs>li{
+    transition:all .6s;-webkit-transition:all .6s;-moz-transition:.6s;
+}
+#navs:after{
+    content:attr(data-close);z-index:1;border-radius:50%;-webkit-border-radius:50%;
+}
+#navs.active:after{
+    content:attr(data-open);
+}
+#navs a{
+    width:40px;height:40px;display:inline-block;border-radius:50%;-webkit-border-radius:50%;text-decoration:none;
+    color:#fff;font-size:0.8em;
+}
+
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}

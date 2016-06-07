@@ -12,15 +12,18 @@
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
  */
 return array(
-    "template_dir" => ROOT_PATH . "/app/views/",
-    "compile_dir" => ROOT_PATH . "/cache/tpls_c/",
-    'config_dir' => ROOT_PATH . '/conf/tpl/',
-    'cache_dir' => ROOT_PATH . '/cache/tpls/',
-    "plugins_dir" => ROOT_PATH . "/core/Lib/Smarty/sysplugins/",
-    'caching' => 0,
-    'cache_lifetime' => '60',
-    'layout' => 'layout/layout.html',
-    "img_url" => "./img",
-    "js_url" => "./js",
-    "css_url" => "./css",
+    "smarty" => array(
+        // "debugging" => DEBUG,
+        "error_reporting" => DEBUG ? E_ALL^E_WARNING: 0,
+        "template_dir" => ROOT_PATH . "/app/views/",
+        "compile_dir" => ROOT_PATH . "/cache/tpls_c/",
+        'config_dir' => ROOT_PATH . '/conf/tpl/',
+        'cache_dir' => ROOT_PATH . '/cache/tpls/',
+        "plugins_dir" => ROOT_PATH . "/core/Lib/Smarty/sysplugins/",
+        'caching' => 0,
+        'cache_lifetime' => 60,
+        'force_compile' => 0,
+    ),
+    // 尽量使用绝对路径
+    'layout' => "layout/layout.html",
 );

@@ -25,13 +25,13 @@ class Adapter implements \Yaf\View_Interface
      * 布局模板文件路径
      * @var string
      */
-    public $_layout = '';
+    public $_layout = null;
     
     /**
      * 默认的布局模板文件路径
      * @var string
      */
-    public $_defaultLayout = '';
+    public $_defaultLayout = null;
  
     /**
      * Constructor
@@ -42,10 +42,8 @@ class Adapter implements \Yaf\View_Interface
      */
     public function __construct($tmplPath = null, $extraParams = array())
     {
-        // @todo 暂时没有更好的办法
-        error_reporting(DEBUG ? E_ALL^E_WARNING: 0);
         // 加载smarty
-        \Yaf\Loader::import(ROOT_PATH . "/core/Lib/Smarty/Smarty.class.php");
+        \Yaf\Loader::import( ROOT_PATH . "/core/Lib/Smarty/Smarty.class.php");
         \Yaf\Loader::import( ROOT_PATH . "/core/Lib/Smarty/sysplugins/smarty_internal_templatecompilerbase.php");
         \Yaf\Loader::import( ROOT_PATH . "/core/Lib/Smarty/sysplugins/smarty_internal_templatelexer.php");
         \Yaf\Loader::import( ROOT_PATH . "/core/Lib/Smarty/sysplugins/smarty_internal_templateparser.php");
@@ -58,32 +56,24 @@ class Adapter implements \Yaf\View_Interface
             $this->setScriptPath($tmplPath);
         }
 
-        $this->_smarty->setTemplateDir($extraParams ['template_dir']);
-        $this->_smarty->setCompileDir($extraParams ['compile_dir']);
-        $this->_smarty->setConfigDir($extraParams ['config_dir']);
-        $this->_smarty->setCacheDir($extraParams ['cache_dir']);
-        $this->_smarty->caching = $extraParams ['caching'];
-        $this->_smarty->cache_lifetime = $extraParams ['cache_lifetime'];
+        foreach ($extraParams['smarty'] as $ek => $ev) {
+            $this->_smarty->$ek = $ev;
+        }
 
+        /**
+         * [$this->_defaultLayout description]
+         * @var [type]
+         */
         $this->_defaultLayout = $extraParams['layout'];
-        $this->_smarty->assign("imgurl", $extraParams['img_url']);
-        $this->_smarty->assign("jsurl", $extraParams['js_url']);
-        $this->_smarty->assign("cssurl", $extraParams['css_url']);
         $this->_smarty->assign('DEBUG_MODE', DEBUG);
     }
  
     /**
-     * Assign variables to the template
-     *
-     * Allows setting a specific key to the specified value, OR passing
-     * an array of key => value pairs to set en masse.
-     *
-     * @see __set()
-     * @param string|array $spec The assignment strategy to use (key or
-     * array of key => value pairs)
-     * @param mixed $value (Optional) If assigning a named variable,
-     * use this as the value.
-     * @return void
+     * 设置模板变量
+     * 
+     * @param  [type] $spec  [description]
+     * @param  [type] $value [description]
+     * @return [type]        [description]
      */
     public function assign($spec, $value = null)
     {
@@ -96,22 +86,37 @@ class Adapter implements \Yaf\View_Interface
     }
  
     /**
-     * Processes a template and returns the output.
+     * 此函数yaf会自动加载。
+     * 1、当禁止布局情况下 
+     * $this->_view->disabledLayout();
      *
-     * @param string $name The template to process.
-     * @return string The output.
+     * 2、不禁止布局情况下
+     * 
+     * @param  [type] $name     [description]
+     * @param  array  $tpl_vars [description]
+     * @return [type]           [description]
      */
     public function render($name,$tpl_vars = array())
     {
-        // 如果禁用layout
+        if (!empty($tpl_vars)) {
+           $this->assign($tpl_vars);
+        }
+
         if ($this->isDisabledLayout()) {
             return $this->_smarty->fetch($name);
+        } else {
+            $result = $this->_smarty->fetch($this->getLayout());
+            return str_replace("__CONTENT__", $this->_smarty->fetch("modules/" . $name), $result);
         }
-        return $this->_smarty->fetch($this->getLayout());
     }
 
     /**
-     * [display description]
+     * 需主动调用
+     * 1、当禁止布局情况下
+     * $this->_view->disabledLayout();
+     *
+     * 2、不禁止布局情况
+     * 
      * @param  [type] $name     [description]
      * @param  array  $tpl_vars [description]
      * @return [type]           [description]
@@ -121,11 +126,18 @@ class Adapter implements \Yaf\View_Interface
     	if (!empty($tpl_vars)) {
     	   $this->assign($tpl_vars);
     	}
-    	echo $this->_smarty->display($name);
+
+        if ($this->isDisabledLayout()) {
+            echo $this->_smarty->display($name);
+        } else {
+            $result = $this->_smarty->fetch($this->getLayout());
+            echo str_replace("__CONTENT__", $this->_smarty->fetch("modules/" . $name), $result);
+        }
+        exit;
     }
 
     /**
-     * [setScriptPath description]
+     * 动态设置模板路径
      * @param [type] $path [description]
      */
     public function setScriptPath($path)
@@ -138,7 +150,7 @@ class Adapter implements \Yaf\View_Interface
     }
 
     /**
-     * [getScriptPath description]
+     * 获取模板路径
      * @return [type] [description]
      */
     public function getScriptPath()
@@ -147,16 +159,16 @@ class Adapter implements \Yaf\View_Interface
     }
 
     /**
-     * Add Js TO Smarty
+     * 需主动调用
+     * 添加JS加载路径
      * @param [type] $path [description]
      */
     public function addJsPath($path)
     {
-        if(is_string($path)) {
+        if (is_string($path)) {
             $path = array($path);
         }
-        // $this->_js = array_merge($this->_js, $path);
-        $this->_smarty->assign("yafscript", json_encode($path));
+        $this->_smarty->assign("yafScript", json_encode($path));
     }
 
     /**

@@ -20,3 +20,63 @@
 2.yaf的model部分可以支持多目录结构 例如 School_Student_V1_CatModel 对应的目录 =》 Models/Schoole/Student/V1/Cat.php<br>
 
 ### easyYaf
+
+#### 目录结构
+
++ public
+  |- index.php //入口文件
+  |- .htaccess //重写规则    
+  |+ css       // css
+  |+ img       // img
+  |+ js        // js
+  |+ xhprofWeb  // xhprof
++ third         // 第三方
+  |+ xhprofLib  // xhprof
++ conf
+  |- conf.ini //配置文件
+  |- config.php // php格式文件路径加载配置
+  |- db.php    // 数据库配置
+  |- memcache.php  // memcache
+  |- redis.php     // redis 配置
+  |- safe.php      // 安全配置
+  |- smarty.php    // smarty 配置
+  |- system.php    // 系统配置
+  |- yaf.php       // Yaf框架一些配置
++ logs            // logs
++ core
+  |+ Lib           // 类库
+     |+ Core       // 核心基类库（封装）
+        |— Common.php   // 全局公用静态类
+        |- Request.php   // 全局请求类
+        |+ Controller  // 核心基类控制器
+     |+ Smarty     // Smarty 类库
+  |+ System        // 框架（非安装扩展情况）
+    |+ Yaf         // 非命名空间框架
+    |+ Yaf_Namespace   // 命名空间框架
+    |- config.php    // 配置文件
+    |- loader.php   // 加载
++ cache             // 缓存
+    |- tpls 
+    |- tpls_c
++ app
+  |+ controllers
+     |- Index.php        // 控制器
+  |+ views               // 视图
+     |+ common           // 公用模板文件
+     |+ layout           // 布局
+     |+ modules          // 模块目录
+        |+ Index         // 控制器
+           |- index.html // 视图文件
+           |- 404.html
+        |+ User
+  |+ modules //其他模块
+     |+ School           // School 模块
+        |+ controllers   
+           |- Index.php   // 控制器
+           |- Teacher.php
+  |+ models  //model目录
+     |+ Index             // 模块 - Index
+        |- Index.php      // 逻辑文件 - Index
+        |- Data           // 数据逻辑文件 - Index
+           |- Index.php
+  |+ plugins //插件目录

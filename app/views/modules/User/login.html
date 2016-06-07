@@ -1,0 +1,50 @@
+<title>登录|{$site.title}</title>
+{include file="common/header-top.html"}
+<!-- 登录 -->
+<form action="/index/user/doLogin" method="post" novalidate="novalidate">
+    <div class="wrapper page-account">
+        <h1>- 登录 {$site.name} -</h1>
+        <div class="page-account-content">
+            <div class="page-account-content-left float-left">
+                <table style="margin-top:25px;">
+                    <tbody><tr>
+                        <td>
+                            <input class="txt" data-val="true" data-val-required="请输入用户名" id="user_name" name="user_name" placeholder="用户名 或 Email" type="text" value="">
+                            <span class="field-validation-valid" data-valmsg-for="user_name" data-valmsg-replace="true"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="txt" data-val="true" data-val-required="请输入密码" id="password" name="password" placeholder="密码" type="password">
+                            <span class="field-validation-valid" data-valmsg-for="password" data-valmsg-replace="true"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="check-box" data-val="true" data-val-required="记住登录状态? 字段是必需的。" id="RememberMe" name="RememberMe" type="checkbox" value="true"><input name="RememberMe" type="hidden" value="false">
+                            <label class="tip" for="RememberMe">记住登录状态?</label>
+                            <span class="field-validation-valid" data-valmsg-for="RememberMe" data-valmsg-replace="true"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="txt btn-submit btn-submit-mini" type="submit" value="登录">
+                            &nbsp;&nbsp;<a href="/index/user/forgetPassword">忘记密码？</a>
+                        </td>
+                    </tr>
+                </tbody></table>
+                
+            </div>
+            <div class="page-account-content-right float-right">
+                <a class="first" href="https://oauth.taobao.com/authorize?response_type=code&amp;client_id=21565374&amp;redirect_uri=http%3a%2f%2fwww.haodian8.com%2faccount%2flogin&amp;state=taobao"><i class="iconfont taobao"></i>使用淘宝账号登录</a><a href="https://api.weibo.com/oauth2/authorize?response_type=code&amp;client_id=1051430212&amp;redirect_uri=http%3a%2f%2fwww.haodian8.com%2faccount%2flogin&amp;state=sinaweibo"><i class="iconfont weibo"></i>使用微博账号登录</a><a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&amp;client_id=100478530&amp;redirect_uri=http%3a%2f%2fwww.haodian8.com%2faccount%2flogin&amp;state=qq"><i class="iconfont qq"></i>使用QQ账号登录</a>
+            </div>
+        </div>
+        <div class="page-account-more">
+            <p>
+                需要注册一个站内账号吗？<a href="/index/user/register">请注册</a>
+            </p>
+        </div>
+    </div>
+</form>
+
+{include file="common/search.html"}

@@ -1,0 +1,6 @@
+<ul class="list-inline">
+    {foreach from=$typeList key=pk item=pv}
+    <li><a href="/index/index/list/type/{$pv.tid}" {if $type == $pv.tid} class="selected" {/if}>{$pv.name}</a></li>
+    <li>/</li>
+    {/foreach}
+</ul>

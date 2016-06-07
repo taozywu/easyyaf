@@ -1,0 +1,20 @@
+<title>404|{$site.title}</title>
+{include file="common/header-top.html"}
+<!-- 注册 -->
+<div class="wrapper page-account">
+    <h1 class="error-txt">- 请求错误发生 -</h1>
+    <div class="page-account-content error-wrapper">
+        <div class="page-account-content-password error-tips">
+            <p>非常抱歉！您在访问页面的过程中发生了错误</p>
+            {if $errorMsg}<p>错误可能问题：{$errorMsg}</p>{/if}
+            <p>您可以通过发邮件方式跟我们联系，邮箱地址：<span id="contact-email"></span></p>
+        </div>
+    </div>
+</div>
+
+<div id="div_error_url" style="display:none">{$site.url}</div>
+<div id="div_error_time" style="display:none">{$errorTime}</div>
+{include file="common/search.html"}
+{literal}
+<script>var error_url = $("#div_error_url").html();var error_time = $("#div_error_time").html();setTimeout(function(){location.href=error_url;}, error_time);</script>
+{/literal}

@@ -33,6 +33,6 @@ return array(
     "forward_limit" => 5,
     // Yaf Frame自动加载的路径
     "autoload_dir" => array(
-        ROOT_PATH . "/core/Frame/",
+        ROOT_PATH . "/core/System/",
     ),
 );

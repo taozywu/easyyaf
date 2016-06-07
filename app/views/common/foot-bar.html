@@ -1,0 +1,31 @@
+<ul id="navs" data-open="斯奇" data-close="宝宝">
+    {foreach from=$typeList key=pk item=pv}
+    {if $pk < 6}
+    <li><a href="/index/index/list/type/{$pv.tid}" title="{$pv.name}">{$pv.short_name}</a></li>
+    {/if}
+    {/foreach}
+</ul>
+
+<script type="text/javascript">
+(function(){
+var ul=$("#navs"),li=$("#navs li"),i=li.length,n=i-1,r=120;
+ul.click(function(){
+$(this).toggleClass('active');
+    if($(this).hasClass('active')) {
+        for(var a=0;a<i;a++){
+            li.eq(a).css({
+                'transition-delay':""+(50*a)+"ms",
+                '-webkit-transition-delay':""+(50*a)+"ms",
+                '-o-transition-delay':""+(50*a)+"ms",
+                'transform':"translate("+(r*Math.cos(90/n*a*(Math.PI/180)))+"px,"+(-r*Math.sin(90/n*a*(Math.PI/180)))+"px",
+                '-webkit-transform':"translate("+(r*Math.cos(90/n*a*(Math.PI/180)))+"px,"+(-r*Math.sin(90/n*a*(Math.PI/180)))+"px",
+                '-o-transform':"translate("+(r*Math.cos(90/n*a*(Math.PI/180)))+"px,"+(-r*Math.sin(90/n*a*(Math.PI/180)))+"px",
+                '-ms-transform':"translate("+(r*Math.cos(90/n*a*(Math.PI/180)))+"px,"+(-r*Math.sin(90/n*a*(Math.PI/180)))+"px"
+            });
+        }
+    } else {
+        li.removeAttr('style');
+    }
+});
+})($);
+</script>

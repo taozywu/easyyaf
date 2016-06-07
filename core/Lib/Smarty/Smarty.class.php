@@ -1197,6 +1197,7 @@ class Smarty extends Smarty_Internal_TemplateBase {
         } else {
             $data = null;
         }
+        // print_r($data);exit;
         // default to cache_id and compile_id of Smarty object
         $cache_id = $cache_id === null ? $this->cache_id : $cache_id;
         $compile_id = $compile_id === null ? $this->compile_id : $compile_id;
@@ -1230,6 +1231,8 @@ class Smarty extends Smarty_Internal_TemplateBase {
             } else {
                 $tpl = new $this->template_class($template, $this, $parent, $cache_id, $compile_id);
             }
+
+            // print_r($tpl);exit;
         }
         // fill data if present
         if (!empty($data) && is_array($data)) {

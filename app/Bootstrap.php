@@ -61,7 +61,7 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract
      */
     public function _initDatabase()
     {
-        \Db\Connection::instance()->config($this->_conf['db']);
+        
     }
 
     /**

@@ -84,6 +84,7 @@ abstract class Smarty_Internal_TemplateBase extends Smarty_Internal_Data {
         if (isset($this->smarty->error_reporting)) {
             $_smarty_old_error_level = error_reporting($this->smarty->error_reporting);
         }
+        // print_r($this->smarty);exit;
         // check URL debugging control
         if (!$this->smarty->debugging && $this->smarty->debugging_ctrl == 'URL') {
             if (isset($_SERVER['QUERY_STRING'])) {

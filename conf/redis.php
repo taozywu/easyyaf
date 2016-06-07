@@ -11,10 +11,6 @@
  * @link http://www.github.com/taozywu
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
  */
-return  array('nodes' => array(
-        array('master' => "192.168.20.95:6379", 'slave' => "192.168.20.95:6379"),
-        array('master' => "192.168.20.95:6379", 'slave' => "192.168.20.95:6379"),
-
-        ),
-        'db' => 0
+return  array(
+    
 );
