@@ -14,7 +14,7 @@ class ShopModel extends \Base\DbBase
 
     public function getVoucherList($pageSize)
     {
-        $db = \Db\Connection::instance()->read(self::DATABASE);
+        $db = {};
         $sql = "select * from " . self::TABLE_SHOP_VOUCHER . " order by id desc limit {$pageSize}";
         return $db->queryAll($sql);
     }
@@ -27,7 +27,7 @@ class ShopModel extends \Base\DbBase
      */
     public function getShopCount($where)
     {
-        $db = \Db\Connection::instance()->read(self::DATABASE);
+        $db = {};
         $sql = "select count(1) from " . self::TABLE_SHOP_DETAIL;
         $sql .= " where id > 0 {$where}";
         return $db->querySimple($sql);
@@ -45,7 +45,7 @@ class ShopModel extends \Base\DbBase
     public function getShopList($where, $page, $pageSize)
     {
         $startIndex = intval(($page -1) * $pageSize);
-        $db = \Db\Connection::instance()->read(self::DATABASE);
+        $db = {};
         $sql = "select * from " . self::TABLE_SHOP_DETAIL;
         $sql .= " where id > 0 {$where} order by score desc limit {$startIndex}, {$pageSize}";
         return $db->queryAll($sql);
@@ -53,7 +53,7 @@ class ShopModel extends \Base\DbBase
 
     public function getTypeData($parentId)
     {
-        $db = \Db\Connection::instance()->read(self::DATABASE);
+        $db = {};
         $sql = "select id,tid,name,short_name from " . self::TABLE_SHOP_TYPE;
         $sql .= " where parent_id = {$parentId} order by hot_sort asc";
         return $db->queryAll($sql);
@@ -61,7 +61,7 @@ class ShopModel extends \Base\DbBase
 
     public function getTypeName($tid)
     {
-        $db = \Db\Connection::instance()->read(self::DATABASE);
+        $db = {};
         $sql = "select name from " . self::TABLE_SHOP_TYPE;
         $sql .= " where tid = {$tid} ";
         return $db->querySimple($sql);
@@ -69,7 +69,7 @@ class ShopModel extends \Base\DbBase
 
     public function getShopDetail($id)
     {
-        $db = \Db\Connection::instance()->read(self::DATABASE);
+        $db = {};
         $sql = "select * from " . self::TABLE_SHOP_DETAIL;
         $sql .= " where id = {$id} ";
         return $db->queryRow($sql);

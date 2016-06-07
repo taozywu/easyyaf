@@ -26,7 +26,7 @@ class UserModel extends \Base\DbBase
             "add_time_int" => time(),
             "last_time_int" => time(),
         );
-        $db = \Db\Connection::instance()->write(self::DATABASE);
+        $db = {};
         return $db->insert(self::TABLE_SHOP_USER, $result);
     }
 
@@ -38,7 +38,7 @@ class UserModel extends \Base\DbBase
      */
     public function getUserInfoByUserNameOrEmail($userValue, $userFlag = 1)
     {
-        $db = \Db\Connection::instance()->read(self::DATABASE);
+        $db = {};
         $where = $userFlag == 1 ? "user_name" : "email";
         $sql = "select * from " . self::TABLE_SHOP_USER . " where `{$where}` = '{$userValue}'";
         return $db->queryRow($sql);
@@ -51,7 +51,7 @@ class UserModel extends \Base\DbBase
      */
     public function checkUserName($userName)
     {
-        $db = \Db\Connection::instance()->read(self::DATABASE);
+        $db = {};
         $sql = "select count(1) from " . self::TABLE_SHOP_USER . " where user_name = '{$userName}'";
         return (int) $db->querySimple($sql);
     }
@@ -64,7 +64,7 @@ class UserModel extends \Base\DbBase
      */
     public function getUserInfoByUserName($userName, $password)
     {
-        $db = \Db\Connection::instance()->read(self::DATABASE);
+        $db = {};
         $sql = "select * from " . self::TABLE_SHOP_USER;
         $sql .= " where user_name = '{$userName}' and password = '{$password}'";
         return $db->queryRow($sql);
@@ -78,7 +78,7 @@ class UserModel extends \Base\DbBase
      */
     public function getUserInfoByEmail($email, $password)
     {
-        $db = \Db\Connection::instance()->read(self::DATABASE);
+        $db = {};
         $sql = "select * from " . self::TABLE_SHOP_USER;
         $sql .= " where email = '{$email}' and password = '{$password}'";
         return $db->queryRow($sql);
