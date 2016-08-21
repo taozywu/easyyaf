@@ -1,8 +1,7 @@
 # 选择？
 ```
-较之thinkphp,yii,ci,zf,larvale等,最终选择yaf!<br>
-在这里很感谢鸟哥、walkor、Rango等！！<br>
-联系请移步 https://github.com/taozywu/JD<br>
+较之thinkphp,yii,ci,zf,larvale等,最终选择yaf!
+在这里很感谢鸟哥、walkor、Rango等！！
 ```
 
 ## 框架分类
