@@ -7,7 +7,6 @@ this's easy yaf framework based on Yaf, it supports db,smarty,redis,memcache .
 # 申明
 
 * 代码中很多有借鉴成分,如触及到个人利益请及时联系我，最后感谢开源，感谢！
-* 请各位在使用如上代码时，请保留作者相关Copyright!
 * 如上基本涵盖db,smarty,memcache,redis。。。其他可以在此基础上进行相关扩展！此版本后面不再单独更新！
 
 # 框架分类
